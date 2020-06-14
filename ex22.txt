@@ -1,0 +1,99 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class Ex22 extends Component
+{
+  constructor()
+  {
+    super()
+    this.state= { name : '', age:''}
+  }
+  getname = (e) =>
+  {
+    this.setState({name : e.target.value})
+  }
+  getage = (e) =>
+  {
+    this.setState({age : e.target.value})
+  }
+
+  reverseStringname = () => {
+    console.log("no")
+    let tempname=this.state.name
+    let tempage=this.state.age
+    // Step 1. Use the split() method to return a new array
+    let splitStringn = tempname.split(""); // var splitString = "hello".split("");
+    // ["h", "e", "l", "l", "o"]
+    let splitStringa = tempage.split("");
+    console.log(splitStringn)
+    // Step 2. Use the reverse() method to reverse the new created array
+    let reverseArrayn = splitStringn.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+    // ["o", "l", "l", "e", "h"]
+    let reverseArraya = splitStringa.reverse();
+ 
+    // Step 3. Use the join() method to join all elements of the array into a string
+    let joinArrayn = reverseArrayn.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+    // "olleh"
+    let joinArraya= reverseArraya.join("");
+    
+
+    console.log(joinArrayn)
+    console.log(joinArraya)
+    //Step 4. Return the reversed string
+    // return joinArray; // "olleh"
+    // return joinArraya,joinArrayn
+    this.setState({name: joinArrayn })
+    this.setState({age: joinArraya })
+    // this.setState({age: joinArraya})
+
+    console.log(this.state.name)
+    console.log(this.state.age)
+}
+
+
+  swife = () =>
+   {
+    let tempname=this.state.name
+    let tempage=this.state.age
+
+      if (tempage.length>4 || tempname.length>4)
+      {
+        console.log("yes")
+        this.reverseStringname()
+      }
+       tempname=this.state.name
+       tempage=this.state.age
+
+      this.setState({age: tempname})
+      this.setState({name: tempage})
+
+
+      var obj1=document.getElementById("age")
+      var obj2=document.getElementById("name")
+      var t=obj1.value
+      obj1.value=obj2.value
+      obj2.value=t
+
+   }
+
+  render()
+  // 2.	Create a component with 2 text boxes . Present their data an separated elements .
+  //  Add a button. A click on the button will swapped between the age and the name.  
+  //  If one of textboxes will contains more than 4 chars – the texts will be swapped as well. 
+
+  {
+    return (
+      <div className="MyDiv">
+
+        <input type="textbox" id="age" onChange={this.getage}/><br/>
+        <input type="textbox" id="name" onChange={this.getname}/><br/>
+
+        <input type="button" value="swife" onClick={this.swife} /><br/>
+ 
+        {/* total: {this.state.total} */}
+      </div>
+    )
+  }
+}
+export default Ex22;
